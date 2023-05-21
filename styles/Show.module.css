@@ -1,0 +1,57 @@
+/* YourComponent.module.css */
+.container {
+    display: flex;
+    
+}
+
+.info{
+    color: white;
+    padding: 3vh;
+    font-size: x-large;
+}
+
+
+.gradient-image-container {
+    position: relative;
+    display: inline-block;
+    margin: 5vh;
+  }
+  
+  .gradient-image {
+    width: 700px;
+    height: auto;
+    position: relative;
+    z-index: 1;
+    border-radius: 20px;
+  }
+  
+  .gradient-overlay {
+    
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(to right, transparent , black);
+    z-index: 2;
+    mask-image: linear-gradient(to right, transparent 10%, black);
+    -webkit-mask-image: linear-gradient(to right, transparent 10%, black);
+    mask-repeat: no-repeat;
+    -webkit-mask-repeat: no-repeat;
+  }
+
+
+  .infoButton{
+    width: 20vh;
+    padding: 2vh;
+    text-decoration: none;
+    border-radius: 10px;
+  }
+
+
+  .infoLink {
+    color: #665e5e;
+    font-size: 1.2rem;
+    text-decoration: none;
+    transition: all 0.3s ease-in-out;
+  }

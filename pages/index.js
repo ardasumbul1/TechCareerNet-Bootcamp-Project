@@ -6,11 +6,11 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import Link from 'next/link';
 import Layout from '../components/layout';
+import Show from '../components/Show'
 
 
 
-
-function GenresPage({ genres,movies }) {
+function GenresPage({ genres,movies,the_movie }) {
   const settings = {
     dots: false,
     infinite: true,
@@ -22,6 +22,7 @@ function GenresPage({ genres,movies }) {
 
   return (
     <Layout>
+      <Show movie={the_movie}/>
       <div className={styles.container}>
           {genres.map((genre,index) => (
               <div key={index}>
@@ -63,6 +64,8 @@ export async function getStaticProps() {
     `https://api.themoviedb.org/3/genre/movie/list?api_key=${apiKey}`
   )
   const data = await response.json()
+
+  
   const movies_list = []; 
 
   let id=1; 
@@ -78,10 +81,15 @@ export async function getStaticProps() {
     id++;
   }
 
+  const movieId = Number(movies_list[1].id)
+  const movie_response = await fetch(`https://api.themoviedb.org/3/movie/${movieId}?api_key=${apiKey}`);
+  const movie_data = await movie_response.json();
+
   return {
     props: {
       genres: data.genres,
       movies: movies_list,
+      the_movie: movie_data,
     },
 
   }
